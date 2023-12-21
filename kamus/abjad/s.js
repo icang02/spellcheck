@@ -412,7 +412,7 @@ const s = [
   "selambatnya",
   "selangit",
   "selangkah",
-  "selanjutnnya",
+  "selanjutnya",
   "sela-sela",
   "selebar",
   "selebihnya",

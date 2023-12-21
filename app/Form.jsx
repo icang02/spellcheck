@@ -106,8 +106,17 @@ export default function Form() {
         ) : (
           <ul className="ml-6 list-disc">
             {kataTypo.map((item, i) => (
-              <li key={i}>
-                <span className="text-red-600">{item}</span> : <span className="text-green-600">{kataRek[i]}</span>
+              <li key={i} className="mb-1.5">
+                <span className="text-red-600">{item}</span> : <span className="text-green-600"></span>
+                {kataRek[i].length != 0 ? (
+                  <select name="cars" id="cars" key={i} className="border border-gray-700 outline-none text-sm">
+                    {kataRek[i].map((item, i) => (
+                      <option value={item.kata}>{item.kata}</option>
+                    ))}
+                  </select>
+                ) : (
+                  <span className="text-xs text-gray-950">Tidak ditemukan.</span>
+                )}
               </li>
             ))}
           </ul>
