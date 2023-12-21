@@ -1,0 +1,30 @@
+const a = require("./abjad/a");
+const b = require("./abjad/b");
+const c = require("./abjad/c");
+const d = require("./abjad/d");
+const e = require("./abjad/e");
+const f = require("./abjad/f");
+const g = require("./abjad/g");
+const h = require("./abjad/h");
+const i = require("./abjad/i");
+const j = require("./abjad/j");
+const k = require("./abjad/k"); // banyak
+const l = require("./abjad/l");
+const m = require("./abjad/m"); // banyak
+const n = require("./abjad/n");
+const o = require("./abjad/o");
+const p = require("./abjad/p"); // banyak sekali
+const q = require("./abjad/q");
+const r = require("./abjad/r");
+const s = require("./abjad/s");
+const t = require("./abjad/t"); // lumayan banyak
+const u = require("./abjad/u");
+const v = require("./abjad/v");
+const w = require("./abjad/w");
+const x = require("./abjad/x");
+const y = require("./abjad/y");
+const z = require("./abjad/z");
+
+const kamus = [...a, ...b, ...c, ...d, ...e, ...f, ...g, ...h, ...i, ...j, ...k, ...l, ...m, ...n, ...o, ...p, ...q, ...r, ...s, ...t, ...u, ...v, ...w, ...x, ...y, ...z];
+
+module.exports = kamus;
