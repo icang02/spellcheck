@@ -72,7 +72,7 @@ export default function Form() {
         <textarea onChange={(e) => setInput(e.target.value)} value={input} id="input" rows="6" className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-400 focus:outline-blue-300" placeholder="Write some word to spell check..." required />
 
         <div className="mt-3 flex items-center space-x-3">
-          <button type="submit" className={`${loading ? "hover:bg-blue-600 opacity-60 cursor-not-allowed" : "hover:bg-blue-700"} text-white bg-blue-600 outline-none font-medium rounded-lg text-sm w-20 h-9 text-center inline-flex items-center transition-all`}>
+          <button type="submit" className={`${loading ? "hover:bg-blue-600 opacity-50 cursor-not-allowed" : "hover:bg-blue-700"} text-white bg-blue-600 outline-none font-medium rounded-lg text-sm w-20 h-9 text-center inline-flex items-center transition-all`}>
             {loading ? (
               <span className="block mx-auto">
                 <svg aria-hidden="true" role="status" className="inline w-4 h-4 text-white animate-spin" viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -106,7 +106,7 @@ export default function Form() {
         ) : (
           <ul className="ml-6 list-disc">
             {kataTypo.map((item, i) => (
-              <li key={i} className="mb-1.5">
+              <li key={i} className="mb-2">
                 <span className="text-red-600">{item}</span> : <span className="text-green-600"></span>
                 {kataRek[i].length != 0 ? (
                   <select name="cars" id="cars" key={i} className="border border-gray-700 outline-none text-sm">
