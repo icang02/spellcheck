@@ -1,16 +1,14 @@
-import NavigasiAbjad from "@/components/NavigasiAbjad";
 import Pagination from "@/components/Pagination";
 import TableKamus from "@/components/TableKamus";
 import prisma from "@/lib/prisma";
 import { revalidatePath } from "next/cache";
-import Link from "next/link";
 
 export const metadata = {
   title: "Daftar Kamus",
 };
 
-const PAGE_SIZE = 50;
-const fetchKamus = async ({ take = 5, skip = 0, abjad = "a" }) => {
+const PAGE_SIZE = 100;
+const fetchKamus = async ({ take = 5, skip = 0 }) => {
   "use server";
 
   try {
@@ -20,20 +18,8 @@ const fetchKamus = async ({ take = 5, skip = 0, abjad = "a" }) => {
       orderBy: {
         kata: "asc",
       },
-      where: {
-        huruf: {
-          equals: abjad,
-        },
-      },
     });
-    const totalKamus = await prisma.kamus.count({
-      where: {
-        huruf: {
-          equals: abjad,
-        },
-      },
-    });
-    const totalSeluruhKamus = await prisma.kamus.count();
+    const totalKamus = await prisma.kamus.count();
     await prisma.$disconnect();
 
     revalidatePath("/kamus");
@@ -44,7 +30,6 @@ const fetchKamus = async ({ take = 5, skip = 0, abjad = "a" }) => {
         totalPages: Math.ceil(totalKamus / take),
         itemPerPage: PAGE_SIZE,
         totalData: totalKamus,
-        totalSeluruhKamus,
       },
     };
   } catch (error) {
@@ -55,32 +40,23 @@ const fetchKamus = async ({ take = 5, skip = 0, abjad = "a" }) => {
 
 export default async function Kamus(props) {
   const pageNumber = parseInt(props?.searchParams?.page || 1);
-  if (isNaN(pageNumber) || pageNumber == "0") {
-    return (
-      <div className="pt-28 grid grid-cols-12 text-sm my-3 text-center text-gray-500">
-        <div className="col-span-12">Data tidak ditemukan.</div>
-      </div>
-    );
-  }
 
   const take = PAGE_SIZE;
   const skip = (pageNumber - 1) * take;
 
-  const { data, metadata } = await fetchKamus({ take, skip, abjad: props.searchParams.abjad });
+  const { data, metadata } = await fetchKamus({ take, skip });
 
   return (
     <div className="min-h-screen">
-      <div className="pt-28 pb-10 container mx-auto max-w-5xl px-3">
+      <div className="py-28 container mx-auto max-w-xl px-3">
         <div className="grid grid-cols-12">
           <div className="col-span-12">
-            <h1 className="font-bold text-xl text-center mb-7">Daftar Kamus</h1>
+            <h1 className="mb-5 font-bold text-xl text-center">Daftar Kamus</h1>
             <TableKamus data={data} metadata={metadata} pageNumber={pageNumber} />
 
             <Pagination {...props.searchParams} {...metadata} />
           </div>
         </div>
-
-        <NavigasiAbjad {...props} />
       </div>
     </div>
   );

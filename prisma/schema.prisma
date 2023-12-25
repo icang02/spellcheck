@@ -13,4 +13,5 @@ datasource db {
 model Kamus {
   id    Int     @id @default(autoincrement())
   kata String @unique
+  huruf String
 }

@@ -1,12 +1,12 @@
 export default function TableKamus(props) {
-  const startIndex = (props.pageNumber - 1) * props.metadata.itemPerPage + 1;
+  // const startIndex = (props.pageNumber - 1) * props.metadata.itemPerPage + 1;
 
   return (
-    <div className="relative overflow-x-auto mt-6 max-w-xs mx-auto">
+    <div className="px-3 md:px-16">
       <small className="mb-3 block">
-        Total kata : <b>{props.metadata.totalData} kata</b>
+        Total kata : <b>{props.metadata.totalSeluruhKamus} kata</b>
       </small>
-      <table className="text-center border w-full text-sm rtl:text-right text-gray-500 dark:text-gray-400">
+      {/* <table className="text-center border w-full text-sm rtl:text-right text-gray-500 dark:text-gray-400">
         <thead className="text-xs text-gray-700 uppercase bg-gray-50">
           <tr>
             <th scope="col" className="border border-gray-400 px-3 py-3">
@@ -27,7 +27,23 @@ export default function TableKamus(props) {
             </tr>
           ))}
         </tbody>
-      </table>
+      </table> */}
+
+      <hr className="h-px bg-gray-400 border-0" />
+      {props.metadata.totalData != 0 ? (
+        <div className="grid grid-cols-12 text-sm my-3">
+          {props.data.map((item, i) => (
+            <div className="col-span-6 md:col-span-3" key={i}>
+              {item.kata}
+            </div>
+          ))}
+        </div>
+      ) : (
+        <div className="grid grid-cols-12 text-sm my-3 text-center text-gray-500">
+          <div className="col-span-12">Data tidak ditemukan.</div>
+        </div>
+      )}
+      <hr className="h-px bg-gray-300 border-0" />
     </div>
   );
 }
