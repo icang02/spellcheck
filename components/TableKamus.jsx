@@ -2,7 +2,7 @@ export default function TableKamus(props) {
   // const startIndex = (props.pageNumber - 1) * props.metadata.itemPerPage + 1;
 
   return (
-    <div className="px-3 md:px-16">
+    <div>
       <small className="mb-3 block">
         Total kata : <b>{props.metadata.totalSeluruhKamus} kata</b>
       </small>

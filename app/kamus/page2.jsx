@@ -48,7 +48,7 @@ export default async function Kamus(props) {
 
   return (
     <div className="min-h-screen">
-      <div className="py-28 container mx-auto max-w-xl px-3">
+      <div className="py-28 container mx-auto max-w-xl">
         <div className="grid grid-cols-12">
           <div className="col-span-12">
             <h1 className="mb-5 font-bold text-xl text-center">Daftar Kamus</h1>

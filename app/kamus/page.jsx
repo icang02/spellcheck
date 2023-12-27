@@ -71,7 +71,7 @@ export default async function Kamus(props) {
   return (
     <div className="min-h-screen">
       <div className="pt-28 pb-10 container mx-auto max-w-5xl px-3">
-        <div className="grid grid-cols-12">
+        <div className="grid grid-cols-12 px-2 md:px-16">
           <div className="col-span-12">
             <h1 className="font-bold text-xl text-center mb-7">Daftar Kamus</h1>
             <TableKamus data={data} metadata={metadata} pageNumber={pageNumber} />
