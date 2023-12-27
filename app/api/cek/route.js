@@ -6,6 +6,7 @@ import wordExists from "word-exists";
 export async function POST(request) {
   const startTime = performance.now();
   const { input } = await request.json();
+  let inputArray = [];
 
   const inputUser = input
     .trim() // remove whitespace starts & ends string
@@ -19,10 +20,10 @@ export async function POST(request) {
   const indexPustaka = inputUser.lastIndexOf("pustaka"); // find index word 'pustaka' from last string
 
   // kalo berurutan kata daftar & pustaka hapus seluruh item array setelahnya
-  let inputArray = [];
-  if (indexDaftar + 1 === indexPustaka) {
+  if (indexDaftar != -1 && indexDaftar == -1 && indexDaftar + 1 === indexPustaka) {
     inputArray = inputUser.slice(0, indexDaftar);
   }
+  inputArray = inputUser;
 
   const kamus = (
     await prisma.kamus.findMany({
